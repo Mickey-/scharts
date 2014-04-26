@@ -1,0 +1,26 @@
+{
+  "name": "scharts",
+  "description": "整合强大的highcharts，封装一套简单易用适合大部分场景的图表组件",
+  "version": "1.0.0",
+  "keywords": [
+    "scharts",
+    "highcharts"
+  ],
+  "homepage": "",
+  "author": "Mickey",
+  "repository": {
+    "type": "git",
+    "url": "http://gitlab.alibaba-inc.com/sj/scharts"
+  },
+  "dependencies": {
+    "grunt": "~0.4.4",
+    "grunt-contrib-copy": "~0.5.0",
+    "grunt-contrib-jade": "~0.11.0",
+    "grunt-contrib-watch": "~0.6.1",
+    "browserify": "~3.38.0",
+    "grunt-browserify": "~2.0.1",
+    "grunt-contrib-less": "~0.11.0",
+    "grunt-contrib-uglify": "~0.4.0",
+    "grunt-newer": "~0.7.0"
+  }
+}
