@@ -9,13 +9,22 @@ module.exports = function(grunt) {
     distRoot: 'build',
     docsRoot: 'docs',
 
+    coffee: {
+      compile: {
+        expand: true
+        ,cwd: 'coffee'
+        ,src: ['**/*.coffee']
+        ,dest: 'js'
+        ,ext: '.js'   
+      }
+    }
     browserify: {
       build: {
-        files: {
-          '<%= distRoot %>/js/<%= pkg.name %>.js': ['js/<%= pkg.name %>.js'],
-          '<%= distRoot %>/js/<%= pkg.name %>-extends.js': ['js/<%= pkg.name %>-extends.js'],
-          '<%= distRoot %>/js/<%= pkg.name %>-all.js': ['js/<%= pkg.name %>-all.js']
-        }
+        expand: true
+        ,cwd: 'js'
+        ,src: '**/*.js'
+        ,dest: '<%= distRoot %>/js'
+        ,ext: '.js'
       }
     },
 
@@ -80,6 +89,10 @@ module.exports = function(grunt) {
         files: 'less/*.less',
         tasks: ['less:sui', 'less:extends', 'less:all', 'newer:copy']
       },
+      coffee: {
+        files: ['coffee/**/*.coffee'],
+        tasks: ['newer:coffee']
+      },
       js: {
         files: 'js/**/*.js',
         tasks: ['browserify', 'newer:copy']
@@ -100,6 +113,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-newer');
+  grunt.loadNpmTasks('grunt-contrib-coffee')
 
   // JS distribution task.
   grunt.registerTask('dist-js', ['browserify', 'uglify']);
