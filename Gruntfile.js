@@ -17,12 +17,12 @@ module.exports = function(grunt) {
         ,dest: 'js'
         ,ext: '.js'   
       }
-    }
+    },
     browserify: {
       build: {
         expand: true
         ,cwd: 'js'
-        ,src: '**/*.js'
+        ,src: './*.js'
         ,dest: '<%= distRoot %>/js'
         ,ext: '.js'
       }
@@ -53,7 +53,7 @@ module.exports = function(grunt) {
         ,src: ['**/*.less']
         ,dest: 'build/css'
         ,ext: '.min.css'
-      }
+      },
 
       docs: {
         files: [{
@@ -91,7 +91,7 @@ module.exports = function(grunt) {
       },
       coffee: {
         files: ['coffee/**/*.coffee'],
-        tasks: ['coffee', 'browserify', 'newer:copy']
+        tasks: ['coffee', 'browserify']
       },
       docs: {
         files: '<%= docsRoot %>/templates/**/*.jade',
@@ -102,7 +102,6 @@ module.exports = function(grunt) {
 
 
   // These plugins provide necessary tasks.
-  grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-jade');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-browserify');
