@@ -7,6 +7,9 @@ block sidebar
   +sidebar('chart')
 
 block content
+  script(src='http://g.tbcdn.cn/sj/lib/highcharts/highcharts.min.js')
+  script(src='../build/js/scharts.js')
+
   div.sui-page-header
     h1 扩展组件——图表
     p 整合强大的highcharts，封装一套简单易用、适合商家系统大部分场景的图表组件
@@ -23,10 +26,12 @@ block content
   div.tab-content
     div.tab-pane.active#demo1
       div.bs-docs-example
-        div#linechart1
+        div
+          div#linechart
+          script.
+            $('#linechart').scharts('line', {title: 'xxxxx'})
     div.tab-pane#code1
+      pre.prettyprint.linenums(data-target='#demo1 script')
     div.tab-pane#doc1
 
-  script(src='http://g.tbcdn.cn/sj/lib/highcharts/highcharts.min.js')
-  script(src='../build/js/scharts.js')
 
