@@ -27,59 +27,9 @@
   };
 
   $.fn.scharts = function(type, opt) {
-    return $(this).highcharts({
-      chart: {
-        marginTop: 50
-      },
-      colors: ["#6cc573"],
-      title: {
-        text: '月均消费额',
-        style: {
-          fontSize: "14px",
-          fontWeight: "bold",
-          color: '#000'
-        }
-      },
-      tooltip: {
-        formatter: function() {
-          var bg, date;
-          bg = this.point.series.color;
-          date = ret.lineData.xDate[ret.lineData.xAxis.indexOf(this.x)];
-          return buildTooltip(bg, this.y, date);
-        }
-      },
-      xAxis: {
-        categories: ret.lineData.xAxis
-      },
-      yAxis: {
-        gridLineColor: '#eee',
-        title: {
-          text: ''
-        }
-      },
-      plotOptions: {
-        line: {
-          lineWidth: 1,
-          marker: {
-            fillColor: "#fff",
-            lineColor: null,
-            lineWidth: 3,
-            states: {
-              hover: {
-                radius: 3.5,
-                lineWidth: 7
-              }
-            }
-          }
-        }
-      },
-      series: [
-        {
-          name: 'sss',
-          data: ret.lineData.seriesData
-        }
-      ]
-    });
+    return $.fn.scharts['_' + type].call(this, opt);
   };
+
+  require('./mod/line');
 
 }).call(this);

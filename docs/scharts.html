@@ -79,6 +79,8 @@
       </div>
       <div class="content">
         <div class="content-inner">
+          <script src="http://g.tbcdn.cn/sj/lib/highcharts/highcharts.min.js"></script>
+          <script src="../build/js/scharts.js"></script>
           <div class="sui-page-header">
             <h1>扩展组件——图表</h1>
             <p>整合强大的highcharts，封装一套简单易用、适合商家系统大部分场景的图表组件</p>
@@ -92,14 +94,17 @@
           <div class="tab-content">
             <div id="demo1" class="tab-pane active">
               <div class="bs-docs-example">
-                <div id="linechart1"></div>
+                <div>
+                  <div id="linechart"></div>
+                  <script>$('#linechart').scharts('line', {title: 'xxxxx'})</script>
+                </div>
               </div>
             </div>
-            <div id="code1" class="tab-pane"></div>
+            <div id="code1" class="tab-pane">
+              <pre data-target="#demo1 script" class="prettyprint linenums"></pre>
+            </div>
             <div id="doc1" class="tab-pane"></div>
           </div>
-          <script src="http://g.tbcdn.cn/sj/lib/highcharts/highcharts.min.js"></script>
-          <script src="../build/js/scharts.js"></script>
         </div>
       </div>
     </div>
