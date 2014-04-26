@@ -87,15 +87,11 @@ module.exports = function(grunt) {
       },
       css: {
         files: 'less/*.less',
-        tasks: ['less:sui', 'less:extends', 'less:all', 'newer:copy']
+        tasks: ['less']
       },
       coffee: {
         files: ['coffee/**/*.coffee'],
-        tasks: ['newer:coffee']
-      },
-      js: {
-        files: 'js/**/*.js',
-        tasks: ['browserify', 'newer:copy']
+        tasks: ['coffee', 'browserify', 'newer:copy']
       },
       docs: {
         files: '<%= docsRoot %>/templates/**/*.jade',
@@ -116,7 +112,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-coffee')
 
   // JS distribution task.
-  grunt.registerTask('dist-js', ['browserify', 'uglify']);
+  grunt.registerTask('dist-js', ['coffee', 'browserify', 'uglify']);
 
   // CSS distribution task.
   grunt.registerTask('dist-css', ['less']);
