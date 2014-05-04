@@ -5,9 +5,6 @@
     credits: {
       enabled: false
     },
-    legend: {
-      enabled: false
-    },
     colors: ['#6cc573', '#71a9df', '#ffc809', '#fd7394'],
     tooltip: {
       useHTML: true,

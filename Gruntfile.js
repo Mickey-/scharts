@@ -122,5 +122,5 @@ module.exports = function(grunt) {
   grunt.registerTask('docs', ['jade']); //必须先执行dist才能执行此任务
 
   // Default task.
-  grunt.registerTask('default', ['test', 'dist', 'docs']);
+  grunt.registerTask('default', ['dist', 'docs']);
 }

@@ -1,18 +1,5 @@
 (function() {
   $.fn.scharts._line = function(opt) {
-    var buildTooltip, ret;
-    ret = {
-      lineData: {
-        xAxis: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
-        xDate: ['2014/1/1-2014/1/31', '2014/2/1-2014/2/31', '2014/3/1-2014/3/31', '2014/4/1-2014/4/31', '2014/5/1-2014/5/31', '2014/6/1-2014/6/31', '2014/7/1-2014/7/31', '2014/8/1-2014/8/31', '2014/9/1-2014/9/31', '2014/10/1-2014/10/31', '2014/11/1-2014/11/31', '2014/12/1-2014/12/31'],
-        seriesData: [22, 44, 22, 55, 66, 88, 33, 55, 99, 17, 48, 96]
-      }
-    };
-    buildTooltip = function(bg, h4, p) {
-      var html;
-      html = "<div class='chart-tooltip' style='background: " + bg + ";'>\n  <h4>" + h4 + "</h4>\n  <p>" + p + "</p>\n</div>";
-      return html;
-    };
     return $(this).highcharts({
       chart: {
         marginTop: 50
@@ -27,15 +14,27 @@
         }
       },
       tooltip: {
+        enabled: !(opt.tooltip === false),
         formatter: function() {
-          var bg, date;
-          bg = this.point.series.color;
-          date = ret.lineData.xDate[ret.lineData.xAxis.indexOf(this.x)];
-          return buildTooltip(bg, this.y, date);
+          var bg, html, inner, type;
+          if (opt.tooltip === false) {
+
+          } else {
+            bg = this.point.series.color;
+            type = typeof opt.tooltip;
+            if (type === 'function') {
+              inner = opt.tooltip.call(this);
+            } else if (type === 'string') {
+              inner = opt.tooltip;
+            }
+            html = "<div class='chart-tooltip' style='background: " + bg + ";'>\n" + inner + "\n</div>";
+            return html;
+          }
         }
       },
       xAxis: {
-        categories: ret.lineData.xAxis
+        categories: opt.xAxis,
+        tickmarkPlacement: 'on'
       },
       yAxis: {
         gridLineColor: '#eee',
@@ -59,12 +58,12 @@
           }
         }
       },
-      series: [
-        {
-          name: 'sss',
-          data: ret.lineData.seriesData
-        }
-      ]
+      series: opt.series,
+      legend: {
+        enabled: (function() {
+          return opt.series.length > 1;
+        })()
+      }
     });
   };
 
