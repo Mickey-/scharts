@@ -4,7 +4,6 @@
       chart: {
         marginTop: 50
       },
-      colors: ["#6cc573"],
       title: {
         text: opt.title,
         style: {
