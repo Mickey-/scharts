@@ -5,7 +5,7 @@
         marginTop: 50
       },
       title: {
-        text: opt.title,
+        text: opt.title || 'linechart',
         style: {
           fontSize: "14px",
           fontWeight: "bold",
@@ -13,7 +13,7 @@
         }
       },
       tooltip: {
-        enabled: !(opt.tooltip === false),
+        enabled: Boolean(opt.tooltip),
         formatter: function() {
           var bg, html, inner, type;
           if (opt.tooltip === false) {
@@ -32,7 +32,7 @@
         }
       },
       xAxis: {
-        categories: opt.xAxis,
+        categories: opt.xAxis || [],
         tickmarkPlacement: 'on'
       },
       yAxis: {
@@ -57,7 +57,7 @@
           }
         }
       },
-      series: opt.series,
+      series: opt.series || [],
       legend: {
         enabled: (function() {
           return opt.series.length > 1;
