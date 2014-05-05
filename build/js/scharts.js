@@ -5,7 +5,6 @@
       chart: {
         marginTop: 50
       },
-      colors: ["#6cc573"],
       title: {
         text: opt.title,
         style: {
@@ -78,7 +77,7 @@
     credits: {
       enabled: false
     },
-    colors: ['#6cc573', '#71a9df', '#ffc809', '#fd7394'],
+    colors: ['#6cc573', '#71a9df', '#ffc809', '#fd7394', '#13dac0', '#fd5634', '#feb800', '#dc3d79'],
     tooltip: {
       useHTML: true,
       borderWidth: 0,

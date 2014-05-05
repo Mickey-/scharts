@@ -27,10 +27,44 @@ block content
     div.tab-pane.active#demo1
       div.bs-docs-example
         div
-          div#linechart
+          div#linechart1
+          div#linechart2
+          script.
+            var lineData1 = {
+              title : 'linechart1: tooltip里的h4和p已内置样式，优先使用h4+p的结构'
+              ,xAxis: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月']
+              ,tooltip: function(){
+                html = '<h4>' + this.x + '的尾巴</h4><p>' + this.y + '</p>';
+                return html;
+              }
+
+              ,series: [{
+                name: '显示在tooltip和legend里'
+                ,data: [22,44,22,55,66,88,33,55,99,17,48,96]
+              }]
+            };
+            var lineData2 = {
+              title : 'linechart2:多数据项时展示label（底部）,tooltip传入函数差异化展示。'
+              ,xAxis: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月']
+              ,tooltip: function(){
+                html = this.x + '---' + this.y;
+                return html;
+              }
+
+              ,series: [{
+                name: '数据项1'
+                ,data: [22,44,22,55,66,88,33,55,99,17,48,96]
+              },{
+                name: '数据项2'
+                ,data: [96, 48, 17, 99, 55, 33, 88, 66, 55, 22, 44, 22]
+              }]
+            };
+            $('#linechart1').scharts('line', lineData1);
+            $('#linechart2').scharts('line', lineData2);
+
     div.tab-pane#code1
       pre.prettyprint.linenums(data-target='#demo1 script')
     div.tab-pane#doc1
 
-  script(src='assets/js/buildcharts.js')
+  //script(src='assets/js/buildcharts.js')
 
