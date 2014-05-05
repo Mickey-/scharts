@@ -1,16 +1,16 @@
 $.fn.scharts._line = (opt) ->
-
   $(this).highcharts
     chart:
       marginTop: 50
     title:
-      text: opt.title
+      text: opt.title || 'linechart'
       style:
         fontSize: "14px"
         fontWeight: "bold"
         color: '#000'
     tooltip:
-      enabled: !(opt.tooltip == false)
+      enabled: Boolean(opt.tooltip)
+      #enabled: true
       formatter: () ->
         if opt.tooltip == false
           return
@@ -28,7 +28,7 @@ $.fn.scharts._line = (opt) ->
           """
           return html
     xAxis:
-      categories: opt.xAxis
+      categories: opt.xAxis || []
       tickmarkPlacement: 'on'
     yAxis:
       gridLineColor: '#eee'
@@ -45,7 +45,7 @@ $.fn.scharts._line = (opt) ->
             hover:
               radius: 3.5
               lineWidth: 7
-    series: opt.series
+    series: opt.series || []
     #数据项数大于1则显示，反之不显示
     legend:
       enabled: (() ->
