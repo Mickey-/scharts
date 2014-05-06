@@ -7,6 +7,9 @@ Highcharts.setOptions
     borderWidth: 0
     shadow: false
     backgroundColor: null
+  xAxis:
+    categories: opt.xAxis || []
+    tickmarkPlacement: 'on'
 
 #TODO migrate
 donutsChartsStyle = {
@@ -22,3 +25,4 @@ $.fn.scharts = (type, opt) ->
   $.fn.scharts['_' + type].call(this, opt)
 
 require('./mod/line')
+require('./mod/donut')

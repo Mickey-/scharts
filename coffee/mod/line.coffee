@@ -27,9 +27,6 @@ $.fn.scharts._line = (opt) ->
           </div>
           """
           return html
-    xAxis:
-      categories: opt.xAxis || []
-      tickmarkPlacement: 'on'
     yAxis:
       gridLineColor: '#eee'
       title:
