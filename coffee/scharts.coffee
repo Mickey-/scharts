@@ -8,10 +8,11 @@ Highcharts.setOptions
     shadow: false
     backgroundColor: null
   xAxis:
-    categories: opt.xAxis || []
+    #categories: opt.xAxis || []
     tickmarkPlacement: 'on'
 
 #TODO migrate
+###
 donutsChartsStyle = {
   colors: {
     buyerLevel: ['#ffdd58', '#ffc809', '#f79a02', '#eb8200', '#ff6f42', '#d05126', '#9c3d1c', '#c12b14'],
@@ -20,6 +21,7 @@ donutsChartsStyle = {
     sex: ['#2794ee', '#fd7394']
   }
 }
+###
  
 $.fn.scharts = (type, opt) ->
   $.fn.scharts['_' + type].call(this, opt)
