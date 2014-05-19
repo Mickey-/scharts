@@ -2,7 +2,9 @@
   $.fn.scharts._line = function(opt) {
     return $(this).highcharts({
       chart: {
-        marginTop: 50
+        marginTop: 50,
+        width: opt.width || null,
+        height: opt.height || null
       },
       title: {
         text: opt.title || 'linechart',
@@ -30,10 +32,6 @@
             return html;
           }
         }
-      },
-      xAxis: {
-        categories: opt.xAxis || [],
-        tickmarkPlacement: 'on'
       },
       yAxis: {
         gridLineColor: '#eee',

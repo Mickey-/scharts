@@ -1,6 +1,4 @@
 (function() {
-  var donutsChartsStyle;
-
   Highcharts.setOptions({
     credits: {
       enabled: false
@@ -11,9 +9,13 @@
       borderWidth: 0,
       shadow: false,
       backgroundColor: null
+    },
+    xAxis: {
+      tickmarkPlacement: 'on'
     }
   });
 
+  /*
   donutsChartsStyle = {
     colors: {
       buyerLevel: ['#ffdd58', '#ffc809', '#f79a02', '#eb8200', '#ff6f42', '#d05126', '#9c3d1c', '#c12b14'],
@@ -21,12 +23,16 @@
       buyerAge: ['#ffc809', '#65c008', '#13dac0', '#ff6f42', '#2794ee', '#ff4489', '#8825ff', '#ccd6de'],
       sex: ['#2794ee', '#fd7394']
     }
-  };
+  }
+  */
+
 
   $.fn.scharts = function(type, opt) {
     return $.fn.scharts['_' + type].call(this, opt);
   };
 
   require('./mod/line');
+
+  require('./mod/donut');
 
 }).call(this);

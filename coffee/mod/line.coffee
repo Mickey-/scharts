@@ -2,6 +2,8 @@ $.fn.scharts._line = (opt) ->
   $(this).highcharts
     chart:
       marginTop: 50
+      width: opt.width || null
+      height: opt.height || null
     title:
       text: opt.title || 'linechart'
       style:

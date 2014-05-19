@@ -13,8 +13,11 @@ block content
   div.sui-page-header
     h1 扩展组件——图表
     p 和设计师讨论统一图表内部区块样式，整合强大的highcharts，封装一套简单易用、适合商家系统大部分场景的图表组件。力图使调用者简单使用。
+    h2 统一的使用方法
+    p <code>$(container).scharts('[chartType]', options)</code> <br> [chartType]即各个图表类型，和highcharts保持一致，如常用的pie,line,donut,colume,map等。
+ 
 
-  h2 折线图
+  h2 折线图:line
   ul.sui-nav.nav-tabs.nav-large
     li.active
       a(href='#demo1', data-toggle='tab') 示例
@@ -44,6 +47,8 @@ block content
             };
             var lineData2 = {
               title : 'linechart2:多数据项时展示label（底部）,tooltip传入函数差异化展示。'
+              ,width: 500
+              ,height: 400
               //,xAxis: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月']
               ,tooltip: function(){
                 html = this.x + '---' + this.y;
@@ -63,8 +68,6 @@ block content
     div.tab-pane#code1
       pre.prettyprint.linenums(data-target='#demo1 script')
     div.tab-pane#doc1
-      使用方法：<br>
-      <code>$(container).scharts('line', options)</code>
       div 
         参数：
         pre.
